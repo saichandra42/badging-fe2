@@ -24,17 +24,16 @@ steps:
     npm install
     npm run build-prod
     popd
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(uiBuild)'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
   displayName: 'npm install and build-prod'
-
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Free Trial(1d1b4b0f-60eb-4a8f-aec2-48838d2c5c8e)'
-    appType: 'webApp'
-    WebAppName: 'ey-badging'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
