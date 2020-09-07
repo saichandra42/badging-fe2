@@ -11,6 +11,11 @@ const OVERRIDES = {
       fontSize: "0.75rem",
     },
   },
+  MuiMenuItem: {
+    root: {
+      color: "#000",
+    },
+  },
 };
 
 const EY_TYPOGRAPHY = {

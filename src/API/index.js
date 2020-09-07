@@ -13,6 +13,7 @@ const MANAGER = "getbadgemetrics";
 const APPROVAL = "approvalFeedback";
 const BADGE_COMPLETED = "isBadgeCompleted";
 const MANAGER_FEEDBACK = "managerBadgeFeedback";
+const NOTIFICATION = "notifications";
 
 const recommendationsURL = () => `${BASE_URL}${RECOMMENDATIONS}`;
 const jobFamiliesURL = () => `${BASE_URL}${JOB_FAMILES}`;
@@ -26,6 +27,7 @@ const managersURL = () => `${BASE_URL}${MANAGER}`;
 const dataForApprovalURL = () => `${BASE_URL}${APPROVAL}`;
 const badgeCompletedURL = () => `${BASE_URL}${BADGE_COMPLETED}`;
 const managerFeedbackURL = () => `${BASE_URL}${MANAGER_FEEDBACK}`;
+const getNotificationURL = () => `${BASE_URL}${NOTIFICATION}`;
 
 const get = (url) => axios.get(url);
 const post = (url, payload) => axios.post(url, payload);
@@ -102,4 +104,9 @@ export const isBadgeCompleted = (userId, subDomain, badge) => {
 export const submitManagerFeedback = (feedback) => {
   const url = managerFeedbackURL();
   return post(url, { ...feedback });
+};
+
+export const getNotification = (userId) => {
+  const url = getNotificationURL();
+  return post(url, { userId: userId });
 };
