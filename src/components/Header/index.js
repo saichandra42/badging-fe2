@@ -46,9 +46,12 @@ function Header() {
             css={{ width: "100%" }}
           >
             <Button color="inherit" onClick={() => history.push("/")}>
-              <Typography variant="h6" style={{ textTransform: "none" }}>
-                EY Badging
-              </Typography>
+              <img
+                src="https://assets.ey.com/content/dam/ey-sites/ey-com/en_gl/generic/logos/ey-logo-black.png"
+                alt="logo"
+                height="75px"
+                width="auto"
+              />
             </Button>
             <Box display="flex" alignItems="center">
               <Badge badgeContent={4} color="primary">
