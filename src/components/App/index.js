@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Typography, Box } from "@material-ui/core";
+import { Container, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { getDomains } from "../../API";
 import Domain from "../Domain";
@@ -17,8 +17,7 @@ function App() {
   useEffect(() => {
     getDomains()
       .then((res) => {
-        const domains = res.data.domains;
-        setDomains(domains);
+        setDomains(res.data);
       })
       .catch((err) => {
         setDomains([]);

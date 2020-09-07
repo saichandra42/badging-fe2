@@ -6,12 +6,13 @@ const JOB_FAMILES = "jobfamilies";
 const COMPETENCIES = "competencies";
 const DOMAINS = "domains";
 const DOMAIN_BADGES = "subdomainbadges";
-const SUB_DOMAINS = "subDomains";
-const FINISH_BADGE = "finishBadge";
-const USERS = "getusers";
-const MANAGER = "getManagersData";
+const SUB_DOMAINS = "subdomains";
+const FINISH_BADGE = "badgemetric";
+const USER = "getuser";
+const MANAGER = "getbadgemetrics";
 const APPROVAL = "approvalFeedback";
 const BADGE_COMPLETED = "isBadgeCompleted";
+const MANAGER_FEEDBACK = "managerBadgeFeedback";
 
 const recommendationsURL = () => `${BASE_URL}${RECOMMENDATIONS}`;
 const jobFamiliesURL = () => `${BASE_URL}${JOB_FAMILES}`;
@@ -20,10 +21,11 @@ const domainsURL = () => `${BASE_URL}${DOMAINS}`;
 const badgesURL = () => `${BASE_URL}${DOMAIN_BADGES}`;
 const subDomainsURL = () => `${BASE_URL}${SUB_DOMAINS}`;
 const finishBadgeURL = () => `${BASE_URL}${FINISH_BADGE}`;
-const usersURL = () => `${BASE_URL}${USERS}`;
+const getUserURL = () => `${BASE_URL}${USER}`;
 const managersURL = () => `${BASE_URL}${MANAGER}`;
 const dataForApprovalURL = () => `${BASE_URL}${APPROVAL}`;
 const badgeCompletedURL = () => `${BASE_URL}${BADGE_COMPLETED}`;
+const managerFeedbackURL = () => `${BASE_URL}${MANAGER_FEEDBACK}`;
 
 const get = (url) => axios.get(url);
 const post = (url, payload) => axios.post(url, payload);
@@ -68,18 +70,18 @@ export const finishBadge = (
 ) => {
   const url = finishBadgeURL();
   return post(url, {
-    userId,
+    userid: userId,
     subdomain: subDomain,
     badge,
     time,
-    timeStamp,
+    time_stamp: timeStamp,
     isCompleted,
   });
 };
 
-export const getusers = () => {
-  const url = usersURL();
-  return get(url);
+export const getuser = (id) => {
+  const url = getUserURL(id);
+  return post(url, { userid: id });
 };
 
 export const getManagerData = () => {
@@ -95,4 +97,9 @@ export const getDataForApproval = () => {
 export const isBadgeCompleted = (userId, subDomain, badge) => {
   const url = badgeCompletedURL();
   return post(url, { userId, subDomain, badge });
+};
+
+export const submitManagerFeedback = (feedback) => {
+  const url = managerFeedbackURL();
+  return post(url, { ...feedback });
 };

@@ -72,7 +72,7 @@ function SubDomain(props) {
                     alignItems: "center",
                   }}
                 >
-                  <EmojiEventsIcon style={{ color: "#a97142" }} />
+                  <EmojiEventsIcon style={{ color: "#d0872e" }} />
                   <Typography variant="body2">Bronze</Typography>
                 </Box>
                 <Button
@@ -111,7 +111,7 @@ function SubDomain(props) {
                     alignItems: "center",
                   }}
                 >
-                  <EmojiEventsIcon style={{ color: "#D8D8D8" }} />
+                  <EmojiEventsIcon style={{ color: "#a5a8ba" }} />
                   <Typography variant="body2">Silver</Typography>
                 </Box>
                 <Button
@@ -150,7 +150,7 @@ function SubDomain(props) {
                     alignItems: "center",
                   }}
                 >
-                  <EmojiEventsIcon style={{ color: "#FFD700" }} />
+                  <EmojiEventsIcon style={{ color: "#aa8b13" }} />
                   <Typography variant="body2">Gold</Typography>
                 </Box>
                 <Button
@@ -189,7 +189,7 @@ function SubDomain(props) {
                     alignItems: "center",
                   }}
                 >
-                  <EmojiEventsIcon style={{ color: "#b9baba" }} />
+                  <EmojiEventsIcon style={{ color: "#868685" }} />
                   <Typography variant="body2">Platinum</Typography>
                 </Box>
                 <Button

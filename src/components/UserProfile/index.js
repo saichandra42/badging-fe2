@@ -1,16 +1,8 @@
 import React, { useState, useEffect } from "react";
-import {
-  Typography,
-  Container,
-  TextField,
-  MenuItem,
-  Button,
-  Select,
-  InputLabel,
-} from "@material-ui/core";
+import { Typography, Container } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { getFamiles, getCompetencies } from "../../API";
-import { useHistory } from "react-router-dom";
+import { getuser } from "../../API";
+import APP_CONSTANTS from "../../constants";
 
 const useStyles = makeStyles({
   spacing: {
@@ -20,67 +12,36 @@ const useStyles = makeStyles({
 
 function UserProfile() {
   const classes = useStyles();
-  const [jobFamily, setjobFamily] = useState([]);
-  const [selectedJobFamily, setSelectedJobFamily] = useState(null);
-  const history = useHistory();
-
-  const fetchCompetencies = (event) => {
-    const family = event.target.value;
-    setSelectedJobFamily(family);
-    getCompetencies({ selectedFamily: family });
-  };
-
+  const [user, setUser] = useState({});
   useEffect(() => {
-    getFamiles()
-      .then((response) => {
-        setjobFamily(response.data);
+    const id = APP_CONSTANTS.userId;
+    getuser(id)
+      .then((res) => {
+        setUser(res.data);
       })
       .catch((err) => {
-        setjobFamily([]);
+        setUser({});
       });
   }, []);
-
+  console.log(user);
   return (
     <React.Fragment>
       <Container className={classes.spacing}>
-        <Typography variant="h6">Profile</Typography>
-        <div className={classes.spacing}>
-          <InputLabel id="job-family">Please select your job family</InputLabel>
-          <Select fullWidth labelId="job-family" onChange={fetchCompetencies}>
-            {jobFamily.map((family, index) => {
-              return (
-                <MenuItem key={index} value={family}>
-                  {family}
-                </MenuItem>
-              );
-            })}
-          </Select>
-        </div>
-        <TextField
-          select
-          fullWidth
-          helperText="Please select your competency profile"
-        >
-          {jobFamily.map((family, index) => {
-            return (
-              <MenuItem key={index} value={family}>
-                {family}
-              </MenuItem>
-            );
-          })}
-        </TextField>
-
-        <Button
-          onClick={() => {
-            history.push("/recommendations");
-          }}
-          variant="contained"
-          color="primary"
-          disableElevation
-          className={classes.spacing}
-        >
-          Show Recommendations
-        </Button>
+        <Typography variant="h4" style={{ color: "#fff" }} gutterBottom>
+          User Details:
+        </Typography>
+        <Typography variant="h6" style={{ color: "#fff" }} gutterBottom>
+          Rank Name: {user.rank_name}
+        </Typography>
+        <Typography variant="h6" style={{ color: "#fff" }} gutterBottom>
+          Department: {user.gds_department}
+        </Typography>
+        <Typography variant="h6" style={{ color: "#fff" }} gutterBottom>
+          Service Line: {user.gds_sl}
+        </Typography>
+        <Typography variant="h6" style={{ color: "#fff" }} gutterBottom>
+          Global SSL: {user.global_ssl}
+        </Typography>
       </Container>
     </React.Fragment>
   );

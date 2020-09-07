@@ -3,7 +3,12 @@ import { createMuiTheme } from "@material-ui/core/styles";
 const OVERRIDES = {
   MuiAppBar: {
     root: {
-      backgroundColor: "#2e2e38 !important",
+      backgroundColor: "#141414 !important",
+    },
+  },
+  MuiOutlinedInput: {
+    input: {
+      fontSize: "0.75rem",
     },
   },
 };

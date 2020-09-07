@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/core/styles";
 import Header from "./components/Header";
 import App from "./components/App";
-import Admin from "./components/Admin";
+import Manager from "./components/Manager";
 import SubDomain from "./components/SubDomain";
 import UserProfile from "./components/UserProfile";
 import Badge from "./components/Badge";
@@ -14,7 +14,7 @@ function Routes() {
     <ThemeProvider theme={theme}>
       <Header />
       <Switch>
-        <Route path="/admin" component={Admin} />
+        <Route path="/manager" component={Manager} />
         <Route path="/profile" component={UserProfile} />
         <Route path="/subdomain" component={SubDomain} />
         <Route path="/badge" component={Badge} />
