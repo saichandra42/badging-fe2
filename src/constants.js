@@ -1,5 +1,5 @@
 const APP_CONSTANTS = {
-  userId: 3,
+  userId: 7,
   timeTaken: {
     Bronze: 10,
     Silver: 20,

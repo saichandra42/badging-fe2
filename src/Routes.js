@@ -7,6 +7,7 @@ import Manager from "./components/Manager";
 import SubDomain from "./components/SubDomain";
 import UserProfile from "./components/UserProfile";
 import Badge from "./components/Badge";
+import HR from "./components/HR";
 import theme from "./theme.js";
 
 function Routes() {
@@ -18,6 +19,7 @@ function Routes() {
         <Route path="/profile" component={UserProfile} />
         <Route path="/subdomain" component={SubDomain} />
         <Route path="/badge" component={Badge} />
+        <Route path="/hr" component={HR} />
         <Route exact path="/" component={App} />
       </Switch>
     </ThemeProvider>
